@@ -1,2 +1,4 @@
-# Webservice_UploadBRCA2006
-Upload to HerediCare/BRCA2006 database
+## UploadBRCA2006
+
+Webservice: Upload preparation for BRCA2006 database
+
