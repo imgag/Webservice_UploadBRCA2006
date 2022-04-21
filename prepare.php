@@ -95,8 +95,7 @@ else
 	$filename = "tmp/UploadBRCA2006_{$ps_name}_".date("ymd_His").".vcf";
 	file_put_contents($filename, implode("\n", $output));
 	
-	print "<p><font color=red>NOTE: HerediCare VCF upload cannot be done until HG38 is completely implemented (Marc Sturm, 16.12.2021)</font>";
-	//print "<p><a href=\"$filename\" download>[Download VCF file]</a>";		
+	print "<p><a href=\"$filename\" download>[Download VCF file]</a>";		
 }
 
 add_back_button();
