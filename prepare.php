@@ -40,7 +40,7 @@ else
 	
 	//annotate class of variants from NGSD
 	$tmp2 = temp_file(".vcf", $ps_name."_");
-	execToolCpp("VcfAnnotateFromVcf", "-in $tmp -annotation_file ".get_path("share_folder")."/data/dbs/NGSD/NGSD_germline.vcf.gz -info_ids CLAS -id_prefix NGSD -out $tmp2", "Annotating variants with NGSD classifications");
+	execToolCpp("VcfAnnotateFromVcf", "-in $tmp -source ".get_path("share_folder")."/data/dbs/NGSD/NGSD_germline.vcf.gz -info_keys CLAS -prefix NGSD -out $tmp2", "Annotating variants with NGSD classifications");
 	if ($debug) print "<br>VCF annotated: $tmp2</br>";
 			
 	//extract variants
