@@ -15,10 +15,15 @@ $ps_name = $_POST['ps'];
 list($s_name, $ps_id) = explode("_", $ps_name);
 
 //get sample folder
-list($stdout, $stderr, $exit_code) = exec2("{$ngsbits}NGSDExportSamples -sample {$s_name} -add_path SAMPLE_FOLDER | egrep '^#|_{$ps_name}' | {$ngsbits}TsvSlice -cols name,path");
+list($stdout, $stderr, $exit_code) = exec2("{$ngsbits}NGSDExportSamples -sample {$s_name} -add_path SAMPLE_FOLDER | egrep '^#|{$ps_name}' | {$ngsbits}TsvSlice -cols name,path");
 if ($exit_code!=0)
 {
 	print "<p><font color=red>Error determining the sample folder<br>Exit code: ".$return_code."<br>Output: ".var_dump(array_merge($stdout, $stderr))."</font><br>";
+	die;
+}
+if (count($stdout)==1)
+{
+	print "<p><font color=red>Error determining the sample folder: The processed sample was not found in NGSD!</font><br>";
 	die;
 }
 list(,$folder) = explode("\t", $stdout[1]);
