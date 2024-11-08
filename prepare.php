@@ -38,7 +38,7 @@ if (!file_exists($vcf))
 else
 {
 	//extract core variants
-	$core_regions = "HBOC_13genes_hg38.bed";
+	$core_regions = "HBOC_34genes_hg38.bed";
 	$tmp = temp_file(".vcf", $ps_name."_");
 	execToolCpp("VariantFilterRegions", "-in $vcf -reg {$core_regions} -out $tmp", "Extracting variants in core region (".basename($core_regions).")");
 	if ($debug) print "<br>VCF filtered: $tmp</br>";

@@ -1,4 +1,5 @@
 help:
 	
 roi:
-	echo 'ATM\nBARD1\nBRCA1\nBRCA2\nBRIP1\nCDH1\nCHEK2\nPALB2\nPTEN\nRAD51C\nRAD51D\nSTK11\nTP53' | GenesToBed -mode exon -source ensembl | BedExtend -n 20 > HBOC_13genes_hg38.bed
+	echo 'APC\nATM\nBARD1\nBRCA1\nBRCA2\nBRIP1\nCDH1\nCDKN2A\nCHEK2\nEPCAM\nFAM175A\nFANCC\nFANCM\nHOXB13\nMEN1\nMLH1\nMRE11A\nMSH2\nMSH6\nMUTYH\nNBN\nNF1\nNTHL1\nPALB2\nPMS2\nPOLD1\nPOLE\nPTEN\nRAD50\nRAD51C\nRAD51D\nSMARCA4\nSTK11\nTP53' | GenesToBed -mode exon -source ensembl | BedExtend -n 20 > HBOC_34genes_hg38.bed
+
