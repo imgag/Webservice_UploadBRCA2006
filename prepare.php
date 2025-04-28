@@ -10,6 +10,19 @@ include "../WebservicesCommon/functions.php";
 $ngsbits = get_path("ngs-bits");
 $debug = false;
 
+
+$hboc_id = trim($_POST['id']);
+if ($hboc_id=="")
+{
+	print "<p><font color=red>GC-HBOC identifier cannot be empty!</font><br>";
+	die;
+}
+if (contains($hboc_id, " "))
+{
+	print "<p><font color=red>GC-HBOC identifier '{$hboc_id}' is not valid!</font><br>";
+	die;
+}
+
 //arguments
 $ps_name = $_POST['ps'];
 list($s_name, $ps_id) = explode("_", $ps_name);
@@ -68,7 +81,7 @@ else
 		{
 			if ($line[1]!="#")
 			{
-				$output[] = $line;
+				$output[] = strtr($line, [$ps_name=>$hboc_id]);
 			}
 			continue;
 		}
@@ -97,7 +110,7 @@ else
 	print "<p>Extracted {$c_vars} variants in core region for upload. {$c_class} of them have a classification.</a>";		
 	
 	//output
-	$filename = "tmp/UploadBRCA2006_{$ps_name}_".date("ymd_His").".vcf";
+	$filename = "tmp/UploadBRCA2006_{$hboc_id}_".date("ymd_His").".vcf";
 	file_put_contents($filename, implode("\n", $output));
 	
 	print "<p><a href=\"$filename\" download>[Download VCF file]</a>";		
